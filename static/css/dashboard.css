@@ -1,0 +1,25 @@
+.dash-nav {
+    display: flex;
+    height: 60px;
+    gap: 15px;
+    align-items: center;
+    color: #fff;
+    padding-left: 20px;
+}
+
+.content-and-sidebar {
+    display: flex;
+}
+
+.sidebar {
+    width: 250px;
+    height: 100vh;
+    border: 1px solid gray;
+}
+
+.content {
+    flex: 1;
+    padding: 20px 50px;
+    height: 100vh;
+    /* margin: auto; */
+}

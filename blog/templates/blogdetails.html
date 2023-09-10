@@ -1,0 +1,38 @@
+{% extends 'base.html' %}
+
+{% block content %}
+  <div class="container">
+    <div class="row justify-content-center p-5 gx-5">
+      <div class="col-md-6">
+        <div class="card mb-3 border-0">
+          <img src="{{ blog.image.url }}" class="card-img-top blog-card-img" alt="..." />
+          <div class="card-body">
+            <div class="d-flex justify-content-between">
+              <h5 class="card-title mb-4">{{ blog.title }}</h5>
+              <span class="me-4">
+                Rating:{% for _ in blog.feedback.all %}
+                  <i class="fas fa-star rating_color"></i>
+                  {% empty %} <small>No ratings yet</small>
+                {% endfor %}
+              </span>
+            </div>
+            <p class="card-text">{{ blog.description }}</p>
+          </div>
+        </div>
+        {% if user.is_authenticated %}
+      <a class="mx-3" href="{% url 'add_bookmark' blog_id=blog.id %}"><button class="btn btn-success">Add Bookmark</button></a>
+       {% endif %}
+      </div>
+      <div class="col-md-6">
+        <form method="post" class="h-auto mx-auto border p-5">
+          {% csrf_token %}
+          <h4 class="text-center text-primary mb-4">Review</h4>
+          {{ feedback_form.as_p }}
+          <div class="text-center mb-3">
+            <button type="submit" class="w-75 btn btn-outline-primary p-0 p-1">Add Review</button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+{% endblock %}

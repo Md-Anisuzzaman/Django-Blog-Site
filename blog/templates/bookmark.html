@@ -1,0 +1,29 @@
+{% extends 'dashboard_layout.html' %}
+
+{% block content %}
+  {% if bookmarks %}
+    <ul>
+        <h3 class="mb-3">Bookmarks List</h3>
+        <table class="table table-bordered table-striped table-light mx-auto w-100">
+          <thead class="table-dark">
+            <tr>
+              <th>Title</th>
+              <th>Bookmark Created</th>
+              <th>Action</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+            {% for bookmark in bookmarks %}
+              <td><a style="text-decoration: underline;" href="{% url 'details' id=bookmark.blog.id %}">{{ bookmark.blog.title }}</a></td>
+              <td>{{ bookmark.timestamp}}</td>
+              <td><a href="{% url 'remove_bookmark' id=bookmark.blog.id %}"><button class="btn btn-danger btn-sm">Delete</button></a></td>
+            </tr>
+            {% endfor %}
+          </tbody>
+        </table>
+    </ul>
+  {% else %}
+    <p>You have no bookmarks yet.</p>
+  {% endif %}
+{% endblock %}

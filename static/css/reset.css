@@ -1,0 +1,51 @@
+/* Standard CSS Reset */
+
+/* Box-sizing border-box for all elements */
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+/* Remove default list styles */
+ul,
+ol,
+li {
+    list-style: none;
+}
+
+/* Remove default heading margins */
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    margin: 0;
+    /* font-family: 'DM Serif Display', serif; */
+   font-weight: 700;
+}
+
+/* Remove anchor text decoration and set default color */
+a {
+    text-decoration: none;
+    color: inherit;
+}
+
+/* Remove button and input default styles */
+button,
+input {
+    border: none;
+    outline: none;
+    background: none;
+}
+
+/* Set default font family and size */
+body {
+    font-family: 'Lato', sans-serif;
+}
+
+
+/* Standard reset complete */

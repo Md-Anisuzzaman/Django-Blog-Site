@@ -1,0 +1,14 @@
+.navbar-brand {
+    font-family: 'DM Serif Display', serif;
+    font-weight: 900;
+}
+
+.a-style {
+    text-decoration: none;
+}
+.cat_style:hover{
+color: crimson;
+}
+.coustom-bg-light {
+    background-color: #e9ecef;
+}

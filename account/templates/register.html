@@ -1,0 +1,53 @@
+{% extends 'base.html' %}
+
+{% block content %}
+  <div class="container">
+    <div class="row justify-content-center align-items-center mx-auto" style="padding: 44px 0px;">
+      <div class="col-md-3">
+        <div>
+          <img class="" src="https://t3.ftcdn.net/jpg/03/39/70/90/360_F_339709048_ZITR4wrVsOXCKdjHncdtabSNWpIhiaR7.jpg" alt="" />
+        </div>
+      </div>
+
+      <div class="col-md-9 mb-3">
+     <p class="text-danger">{{ form.non_field_errors }}</p>
+        <form method="post" class="w-50 h-auto mx-auto border p-5 bg-lighr">
+          {% csrf_token %}
+          <h3 class="text-center mb-4" style="color: #98a3f2;">Register</h3>
+          <div class="mb-3">
+            <label class="form-label">Username</label>
+            <input type="text" name="username" class="form-control" />
+          </div>
+          <div class="mb-3">
+            <label class="form-label">Email</label>
+            <input type="email" name="email" class="form-control" />
+          </div>
+          <div class="mb-3">
+            <label class="form-label">Role</label>
+         <select name="role" class="form-select">
+            <option value="" {% if not form.role.value %}selected{% endif %}>Select here</option>
+            {% for choice in form.role.field.choices %}
+                <option value="{{ choice.0 }}" {% if choice.0 == form.role.value %}selected{% endif %}>
+                    {{ choice.1 }}
+                </option>
+            {% endfor %}
+        </select>
+        </div>
+          <div class="mb-4">
+            <label class="form-label">Password</label>
+            <input type="password" name="password" class="form-control" />
+            {% comment %} {{form.password}} {% endcomment %}
+          </div>
+          <div class="text-center mb-3">
+            <button type="submit" class="w-75 btn btn-outline-primary p-0 p-1">Submit</button>
+          </div>
+          <div class="text-center">
+            <a class="fs-5 text-primary me-2" href="/"><i class="fa-brands fa-facebook"></i></a>
+            <a class="fs-5 text-danger me-2" href="/"><i class="fa-brands fa-google"></i></a>
+            <a class="fs-5 text-dark" href="/"><i class="fa-brands fa-twitter"></i></a>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+{% endblock %}

@@ -1,0 +1,81 @@
+{% extends 'base.html' %}
+
+{% block content %}
+  <main>
+    <div class="container">
+      <div class="search_div">
+        <form method="get" action="">
+          <div class="input-group p-5">
+            <input type="text" class="form-control p-2" name="searchTerm" placeholder="search blog by title here..." />
+            <div class="input-group-append">
+              <button class="btn btn-outline-dark px-4" type="submit"><i class="fa-sharp fa-solid fa-magnifying-glass fs-3 text-center"></i></button>
+            </div>
+          </div>
+        </form>
+      </div>
+      {% if searchTerm %}
+        <div class="row">
+          {% for blog in blog_posts %}
+            <div class="col-md-4">
+              <div class="card mb-3 border-0">
+                <img src="{{ blog.image.url }}" class="card-img-top blog-card-img" alt="..." />
+                <div class="card-body">
+                  <h5 class="card-title">{{ blog.title }}</h5>
+                  <p class="card-text">{{ blog.description|slice:':100' }}</p>
+                </div>
+              </div>
+            </div>
+          {% endfor %}
+        </div>
+      {% else %}
+        <div class="d-flex align-items-center justify-content-left mb-3 gx-5">
+          <div>
+            <h5 class="">All Blogs</h5>
+          </div>
+          <div class="mx-5 mt-2">
+            <!-- Add this form within the existing 'main' block -->
+            <form method="get" action="">
+              <select name="filter_by" class="custom-select custom-select-lg p-1">
+                <option value="Select option">Select option</option>
+                <option value="All blogs">All blogs</option>
+                <option value="Author">Author</option>
+                <option value="Date">Date</option>
+              </select>
+              <button type="submit" class="btn btn-primary btn-sm mb-1">Filter</button>
+            </form>
+          </div>
+        </div>
+        <div class="row mt-4">
+          <div class="col-lg-9">
+            <div class="row">
+              {% for blog in blogs %}
+                <div class="col-md-6">
+                  <a href="{% url 'details' id=blog.id %}">
+                    <div class="card mb-3 border-0">
+                      <img src="{{ blog.image.url }}" class="card-img-top blog-card-img" alt="..." />
+                      <div class="card-body">
+                        <h5 class="card-title">{{ blog.title }}</h5>
+                        <p class="card-text">{{ blog.description|slice:':100' }}</p>
+                      </div>
+                    </div>
+                  </a>
+                </div>
+              {% endfor %}
+            </div>
+          </div>
+          <div class="col-lg-3">
+            <div class="card-body border border-secondary">
+              <ul class="list-menu p-0 m-0">
+                {% for cat in categories %}
+                  <li class="border border-secondary p-2">
+                    <a class="cat_style" href="{% url 'category_filter' cat.name %}"><i class="fa-solid fa-arrow-right"></i> {{ cat.name }}</a>
+                  </li>
+                {% endfor %}
+              </ul>
+            </div>
+          </div>
+        </div>
+      {% endif %}
+    </div>
+  </main>
+{% endblock %}

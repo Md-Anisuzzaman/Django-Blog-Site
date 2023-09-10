@@ -1,0 +1,52 @@
+{% extends 'dashboard_layout.html' %}
+
+{% block content %}
+  <div class="container">
+    <h4 class="mt-2 mb-3">Author Information</h4>
+    <table class="table table-bordered table-striped table-light mx-auto">
+      <thead class="table-dark">
+        <tr>
+          <th>Id</th>
+          <th>Name</th>
+          <th>Bio</th>
+          <th>Eamil</th>
+          <th>Mobile</th>
+          <th>Role</th>
+          <th>Created Time</th>
+          <th>Last_Login</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>{{ user.id }}</td>
+          <td>{{ user.username }}</td>
+          <td>{{ user.bio|slice:':30' }}</td>
+          <td>{{ user.email }}</td>
+          <td>{{ user.phone_number }}</td>
+          <td>{{ user.role }}</td>
+          <td>{{ user.date_joined }}</td>
+          <td>{{ user.last_login }}</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <div class="row">
+      {% if blogs %}
+        <h4 class="mt-5 mb-3">Created blogs List</h4>
+        {% for blog in blogs %}
+          <div class="col-md-4">
+            <div class="card mb-3 border-0">
+              <img src="{{ blog.image.url }}" class="card-img-top blog-card-img" alt="..." />
+              <div class="card-body">
+                <h5 class="card-title">{{ blog.title }}</h5>
+                <p class="card-text">{{ blog.description|slice:':100' }}</p>
+              </div>
+            </div>
+          </div>
+        {% endfor %}
+      {% else %}
+        <h4 class="mt-5">No blogs avaiable, Created first.</h4>
+      {% endif %}
+    </div>
+  </div>
+{% endblock %}

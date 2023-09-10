@@ -1,0 +1,38 @@
+{% extends 'dashboard_layout.html' %}
+
+{% block content %}
+  <h3 class="text-center mb-3">Blogs Management</h3>
+  <table class="table table-bordered table-striped table-light mx-auto w-100">
+    <thead class="table-dark">
+      <tr>
+        <th>Id</th>
+        <th>Title</th>
+        <th>Created Time</th>
+        <th>Modified Time</th>
+        <th>Status</th>
+        <th>Action</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for blog in blogs %}
+        <tr>
+          <td>{{ blog.id }}</td>
+          <td>{{ blog.title|slice:':30' }}</td>
+          <td>{{ blog.created_date }}</td>
+          <td>{{ blog.modified_date }}</td>
+          <td>{{ blog.status }}</td>
+          <td>
+            <a href="{% url 'create' %}"><button type="submit" class="btn btn-primary btn-sm">Create</button></a>
+            <a href="{% url 'edit_blog' blog.id %}"><button type="submit" class="btn btn-primary btn-sm">Edit</button></a>
+            {% if blog.status == 'Published' %}
+              <a href="}"><button type="submit" class="btn btn-success btn-sm">Unpblished</button></a>
+            {% else %}
+              <a href=""><button type="submit" class="btn btn-success btn-sm">Published</button></a>
+            {% endif %}
+            <a href="{% url 'delete_blog' blog.id %}"><button type="submit" class="btn btn-danger btn-sm">Delete</button></a>
+          </td>
+        </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+{% endblock %}
