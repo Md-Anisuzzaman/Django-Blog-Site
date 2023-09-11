@@ -11,7 +11,6 @@ urlpatterns = [
     path('category/<str:cat_name>/', views.home, name="category_filter"),
     path('account/', include('account.urls')),
     path('blog/', include('blog.urls')),
-]
+]+ static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
 
-urlpatterns += static(settings.MEDIA_URL, document_root = settings.MEDIA_ROOT)
-urlpatterns += static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
+
