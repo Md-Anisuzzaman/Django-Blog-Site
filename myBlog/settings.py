@@ -150,7 +150,7 @@ STATICFILES_DIRS = [
 
 STATIC_ROOT = BASE_DIR / 'static'
 
-print(STATIC_ROOT)
+
 
 # import os
 # STATICFILES_DIRS = os.path.join(BASE_DIR, 'static'),
