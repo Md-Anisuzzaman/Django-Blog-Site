@@ -26,9 +26,9 @@ SECRET_KEY = 'django-insecure-iu$$hl^431r=peyr+k3kygvbh&(stwh(t%z_*kr4*ckb!!a@lz
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-# ALLOWED_HOSTS = []
 
-ALLOWED_HOSTS = ['.vercel.app','now.sh','127.0.0.1','localhost']
+
+ALLOWED_HOSTS = ['.vercel.app','now.sh']
 
 
 # Application definition
@@ -89,13 +89,7 @@ WSGI_APPLICATION = 'myBlog.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/4.2/ref/settings/#databases
 
-#my databases need to uncomment
-# DATABASES = {
-#     'default': {
-#         'ENGINE': 'django.db.backends.sqlite3',
-#         'NAME': BASE_DIR / 'db.sqlite3',
-#     }
-# }
+
 
 DATABASES = {
     'default': {
@@ -143,9 +137,7 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/4.2/howto/static-files/
 
 STATIC_URL = 'static/'
-# STATICFILES_DIRS = [
-#     BASE_DIR / 'static',
-# ]
+
 import os
 STATICFILES_DIRS = os.path.join(BASE_DIR, 'static'),
 STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles_build', 'static')
