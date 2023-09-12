@@ -2,7 +2,7 @@
 
 {% block content %}
   <div class="container">
-    <div class="row justify-content-center align-items-center mx-auto" style="padding: 44px 0px;">
+    <div class="row justify-content-center align-items-center mx-auto">
       <div class="col-md-3">
         <div>
           <img class="" src="https://t3.ftcdn.net/jpg/03/39/70/90/360_F_339709048_ZITR4wrVsOXCKdjHncdtabSNWpIhiaR7.jpg" alt="" />
@@ -11,9 +11,10 @@
 
       <div class="col-md-9 mb-3">
      <p class="text-danger">{{ form.non_field_errors }}</p>
-        <form method="post" class="w-50 h-auto mx-auto border p-5 bg-lighr">
+        <form method="post" class="w-50 h-auto mx-auto border p-5">
           {% csrf_token %}
           <h3 class="text-center mb-4" style="color: #98a3f2;">Register</h3>
+          <p class="text-center">Already have an account,&nbsp; <a class="text-primary" style="text-decoration:underline;" href="{% url 'login' %}">Login</a></p>
           <div class="mb-3">
             <label class="form-label">Username</label>
             <input type="text" name="username" class="form-control" />
