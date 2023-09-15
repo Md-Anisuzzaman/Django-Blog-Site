@@ -1,8 +1,8 @@
 from django.shortcuts import render, get_object_or_404
 from blog.models import BlogPost
 from category.models import Category
+from django.db.models import Q
 from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
-
 
 
 def home(request, cat_name=None):
@@ -32,7 +32,7 @@ def home(request, cat_name=None):
 #         blog_posts = BlogPost.objects.filter(title__icontains=searchTerm)
 #     else:
 #         blog_posts = []
-   
+
 #     # Get the selected filter option from the request
 #     filter_by = request.GET.get('filter_by')
 
@@ -74,11 +74,17 @@ def home(request, cat_name=None):
 #     return render(request, 'home.html', context)
 
 def home_view(request):
-    searchTerm = request.GET.get('searchTerm', '')
+    searchTerm = request.GET.get('searchTerm')
     blog_posts = BlogPost.objects.all()
 
     if searchTerm:
-        blog_posts = blog_posts.filter(title__icontains=searchTerm)
+        # blog_posts = blog_posts.filter(title__icontains=searchTerm)
+        blog_posts = blog_posts.filter(
+            Q(title__icontains=searchTerm) |
+            Q(author__username__icontains=searchTerm) |
+            Q(description__icontains=searchTerm) |
+            Q(categories__name__contains=searchTerm)
+        )
 
     # Get the selected filter option from the request
     filter_by = request.GET.get('filter_by')

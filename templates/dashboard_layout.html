@@ -18,22 +18,25 @@
       <div class="content-and-sidebar">
         <div id="sidebar" class="sidebar">
           <ul class="m-0 p-0 pt-5 mt-4">
+            <li class="fs-4 border border-secondary">
+              <a class="" href="{% url 'userblog' %}">My Blogs</a>
+            </li>
+            {% if user.role == 'admin' %}
+              <li class="fs-4 border border-secondary">
+                <a class="" href="{% url 'allblogs' %}">All Blogs</a>
+              </li>
+            {% endif %}
+            <li class="fs-4 border border-secondary">
+              <a class="" href="{% url 'bookmark_list' %}">Bookmarks</a>
+            </li>
 
             <li class="fs-4 border border-secondary">
               <a class="" href="{% url 'profile' %}">Profile</a>
             </li>
 
             <li class="fs-4 border border-secondary">
-              <a class="" href="{% url 'userblog' %}">Myblogs</a>
-            </li>
-            <li class="fs-4 border border-secondary">
-              <a class="" href="{% url 'bookmark_list' %}">Bookmarks</a>
-            </li>
-
-            <li class="fs-4 border border-secondary">
               <a class="" href="{% url 'home' %}">Home</a>
             </li>
-            
           </ul>
         </div>
 

@@ -1,5 +1,55 @@
 {% extends 'dashboard_layout.html' %}
 
 {% block content %}
-<h3 class="text-center mt-5">Dashboard home need to refactoring which provide you all information about this website  </h3>
+  <h3 class="text-center mb-3">Dahhboard Home</h3>
+    <div class="row gy-3">
+      <div class="col-md-3">
+        <div class="card bg-info border-1">
+          <div class="card-body">
+            <h4 class="text-center card-title">Total Users</h4>
+            <h6 class="text-center">{{ totalUser }}</h6>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-3">
+        <div class="card bg-info border-1">
+          <div class="card-body">
+            <h4 class="text-center card-title">Total Blogs</h4>
+            <h6 class="text-center">{{ totalBlogs }}</h6>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-3">
+        <div class="card bg-info border-1">
+          <div class="card-body">
+            <h4 class="text-center card-title">My Blogs</h4>
+            <h6 class="text-center">{{ myBlogs }}</h6>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-3">
+        <div class="card bg-info border-1">
+          <div class="card-body">
+            <h4 class="text-center card-title">Total Category</h4>
+            <h6 class="text-center">{{ totalCategory }}</h6>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-3">
+        <div class="card bg-info border-1">
+          <div class="card-body">
+            <h4 class="text-center card-title">Total Bookmarks</h4>
+            <h6 class="text-center">{{ totalBookMarks }}</h6>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-3">
+        <div class="card bg-info border-1">
+          <div class="card-body">
+            <h4 class="text-center card-title">Total Review</h4>
+            <h6 class="text-center">{{ totalBlogFeedback }}</h6>
+          </div>
+        </div>
+      </div>
+    </div>
 {% endblock %}

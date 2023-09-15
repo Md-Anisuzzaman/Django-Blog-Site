@@ -1,7 +1,8 @@
 from django.shortcuts import render, redirect
 from .forms import RegistrationForm
 from account.models import Account
-from blog.models import BlogPost
+from blog.models import BlogPost, BlogFeedback, Bookmark
+from category.models import Category
 from django.contrib import messages, auth
 # from django.contrib.auth import authenticate, login
 from django.contrib.auth.decorators import login_required
@@ -64,9 +65,26 @@ def user_profile(request):
     context = {
         'user': user,
         'blogs': blogs
-        }
+    }
     return render(request, 'userProfile.html', context)
 
 
 def dashboard(request):
-    return render(request, 'dashboard.html')
+    totalBlogs = BlogPost.objects.count()
+    totalBlogFeedback = BlogFeedback.objects.count()
+    totalUser = Account.objects.count()
+    totalBookMarks = Bookmark.objects.count()
+    totalCategory = Category.objects.count()
+    user = request.user
+    myBlogs = BlogPost.objects.filter(author=user).count()
+
+    context = {
+        "totalBlogs": totalBlogs,
+        "totalBlogFeedback": totalBlogFeedback,
+        "totalUser": totalUser,
+        "totalBookMarks": totalBookMarks,
+        "totalCategory": totalCategory,
+        "myBlogs": myBlogs,
+    }
+
+    return render(request, 'dashboard.html', context)
